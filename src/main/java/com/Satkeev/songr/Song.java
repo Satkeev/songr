@@ -5,7 +5,6 @@ import javax.persistence.*;
 
 @Entity
 public class Song {
-    @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     public long id;
     public String title;
