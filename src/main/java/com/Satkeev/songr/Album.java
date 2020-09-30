@@ -8,7 +8,7 @@ import java.util.List;
 public class Album {
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
-    public long id;
+    public String id;
     public String title;
     public String artist;
     public int songCount;
@@ -26,5 +26,13 @@ public class Album {
     }
 
     public Album() {}
+
+    public void setId(String id) {
+        this.id = id;
+    }
+
+    public String getId() {
+        return id;
+    }
 }
 

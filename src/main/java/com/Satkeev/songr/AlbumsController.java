@@ -13,17 +13,10 @@ import java.util.List;
 
 @Controller
 public class AlbumsController {
-    private final AlbumRepository albumRepo;
-    private final SongRepository songRepo;
-
-    public AlbumsController(SongRepository songRepo) {
-        this(, songRepo);
-    }
-
-    public AlbumsController(AlbumRepository albumRepo, SongRepository songRepo) {
-        this.albumRepo = albumRepo;
-        this.songRepo = songRepo;
-    }
+    @Autowired
+    private AlbumRepository albumRepo;
+    @Autowired
+    private SongRepository songRepo;
 
     //Gets all albums from the database to render on the page
     @RequestMapping(value="/albums", method= RequestMethod.GET)
@@ -47,8 +40,8 @@ public class AlbumsController {
 
     @RequestMapping(value="/albums/{id}", method=RequestMethod.GET)
     public String show(@PathVariable long id, Model m) {
-        m.addAttribute("album", albumRepo.findById(id).get());
-        m.addAttribute("songs", albumRepo.findById(id).get().songs);
+        final var album = m.addAttribute("album", albumRepo.findById(id).get(albumRepo));
+        final var songs = m.addAttribute("songs", albumRepo.findById(id).get(albumRepo));
         return "album";
     }
 
@@ -58,7 +51,7 @@ public class AlbumsController {
                                 @RequestParam int length,
                                 @RequestParam int trackNumber) {
         Song newSong = new Song(title, length, trackNumber);
-        newSong.album = albumRepo.findById(albumId).get();
+        newSong.album = (Album) albumRepo.findById(albumId).get(albumRepo);
         songRepo.save(newSong);
 
         return new RedirectView("/albums/" + albumId);
