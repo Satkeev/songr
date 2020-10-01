@@ -1,0 +1,32 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All albums!</title>
+</head>
+<body>
+<h1>All the Albums</h1>
+<ul>
+    <li th:each="album : ${albums}">
+        <img th:src="${album.imageURL}" alt="Album Image" style="width:100px;height:100px">
+        <p>Album Title: <span th:text="${album.title}"></span></p>
+        <p>Artist: <span th:text="${album.artist}"></span></p>
+<!--        <p>Song Count: <span th:text="${album.songCount}"></span></p>-->
+        <p>Album Length: <span th:text="${album.length}"></span></p>
+        <ul>
+<!--            <b>Songs:</b>-->
+<!--            <li th:each="song: ${album.songs}">-->
+<!--                <p>Title: <span th:text="${song.title}"></span></p>-->
+<!--                <p>Length: <span th:text="${song.length}"></span></p>-->
+<!--                <p>Track Number: <span th:text="${song.trackNumber}"></span></p>-->
+<!--            </li>-->
+        </ul>
+<!--        <form method="POST" action="/addSong">-->
+<!--            <input name="id" id="id" th:value="${album.id}" style="display:none" />-->
+<!--            <input type="Submit" value="Add New Song" />-->
+<!--        </form>-->
+    </li>
+</ul>
+<form method="GET" action="/addAlbum">
+    <input type="submit" value="Add New Album" />
+</form>
+</body>
+</html>

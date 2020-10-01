@@ -27,10 +27,10 @@ localhost:8080/capitalize/{string}
 
 example input:
 
-localhost:8080/capitalize/I love Java
+localhost:8080/capitalize/My work
 example output:
 
-I LOVE CODING
+MY WORK
 Reverse:
 locahost:8080/reverse/sentence={string}
 
@@ -39,7 +39,7 @@ locahost:8080/reverse/sentence={string}
 localhost:8080/reverse/sentence=I love Java
 example output:
 
-I love coding
+My work
 Songr App:
 Launch server with:
 
