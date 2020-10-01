@@ -1,0 +1,19 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>All songs!</title>
+</head>
+<body>
+<h1>All the Songs</h1>
+<ul>
+    <li th:each="song : ${songs}">
+        <p>Title: <span th:text="${song.title}"></span></p>
+        <p>Length: <span th:text="${song.length}"></span></p>
+        <p>Track Number: <span th:text="${song.trackNumber}"></span></p>
+        <p>Album: <span th:text="${song.album.title}"></span></p>
+    </li>
+</ul>
+<form method="GET" action="/addSong">
+    <input type="submit" value="Add New Song" />
+</form>
+</body>
+</html>

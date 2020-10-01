@@ -19,7 +19,7 @@ public class SongrControllerTest {
     @Test
 
     public void testHello() throws Exception {
-        this.mockMvc 
+        this.mockMvc
                 .perform(get("/hello"))
                 .andExpect(content()
                         .string(containsString("Hello, World!")));
